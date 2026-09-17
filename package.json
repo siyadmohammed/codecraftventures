@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && cd dist && rm -rf .git && git init && git checkout -b gh-pages && git add -A && git commit -m 'Deploy to GitHub Pages' && git remote add origin $(git -C .. config --get remote.origin.url) && git push -f origin gh-pages && cd .. && rm -rf dist/.git"
   },
   "dependencies": {
     "clsx": "^2.1.1",
