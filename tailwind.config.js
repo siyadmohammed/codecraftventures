@@ -8,43 +8,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#07090E',
+        background: '#08080A',
         surface: {
-          50: '#161B26',
-          100: '#11151F',
-          200: '#0C0F17',
-          300: '#080A10',
+          DEFAULT: '#0F0F12',
+          raised: '#16161A',
         },
-        brand: {
-          cyan: '#00F0FF',
-          emerald: '#10B981',
-          indigo: '#6366F1',
-          violet: '#8B5CF6',
-          purple: '#A855F7',
+        line: {
+          DEFAULT: 'rgba(255, 255, 255, 0.08)',
+          strong: 'rgba(255, 255, 255, 0.16)',
         },
-        borderLight: 'rgba(255, 255, 255, 0.08)',
-        borderHover: 'rgba(255, 255, 255, 0.18)',
+        accent: {
+          DEFAULT: '#8E7CFF',
+          soft: '#BCB2FF',
+        },
       },
       fontFamily: {
-        sans: ['"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['"Geist"', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
       },
       animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'glow': 'glow 3s ease-in-out infinite alternate',
-        'spin-slow': 'spin 20s linear infinite',
+        marquee: 'marquee var(--duration) linear infinite',
+        shine: 'shine 3.2s ease-in-out infinite',
+        'gradient-pan': 'gradient-pan 6s linear infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
+        marquee: {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
         },
-        glow: {
-          '0%': { opacity: '0.4', filter: 'drop-shadow(0 0 15px rgba(99, 102, 241, 0.3))' },
-          '100%': { opacity: '0.8', filter: 'drop-shadow(0 0 25px rgba(0, 240, 255, 0.5))' },
-        }
-      }
+        shine: {
+          '0%': { transform: 'translateX(-120%) skewX(-20deg)' },
+          '60%, 100%': { transform: 'translateX(220%) skewX(-20deg)' },
+        },
+        'gradient-pan': {
+          from: { backgroundPosition: '0% 50%' },
+          to: { backgroundPosition: '200% 50%' },
+        },
+      },
     },
   },
   plugins: [],

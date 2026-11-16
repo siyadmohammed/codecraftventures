@@ -17,11 +17,19 @@ export const ThreeHeroCanvas: React.FC = () => {
     const camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
     camera.position.z = 24;
 
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance',
-    });
+    // The scene is decorative: without WebGL (blocklisted GPU, disabled hardware acceleration)
+    // the constructor throws, so skip the canvas instead of taking the whole page down.
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true,
+        powerPreference: 'high-performance',
+      });
+    } catch (err) {
+      console.warn('Hero 3D scene disabled: WebGL is unavailable.', err);
+      return;
+    }
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
@@ -35,10 +43,10 @@ export const ThreeHeroCanvas: React.FC = () => {
     
     // Wireframe Material with Cyan/Indigo gradient feel
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 0x00F0FF,
+      color: 0xffffff,
       wireframe: true,
       transparent: true,
-      opacity: 0.28,
+      opacity: 0.1,
     });
     const coreMesh = new THREE.Mesh(coreGeometry, wireframeMaterial);
     masterGroup.add(coreMesh);
@@ -46,10 +54,10 @@ export const ThreeHeroCanvas: React.FC = () => {
     // Inner glowing solid octahedron (Software Engine)
     const innerGeometry = new THREE.OctahedronGeometry(2.8, 0);
     const innerMaterial = new THREE.MeshBasicMaterial({
-      color: 0x6366F1,
+      color: 0x8e7cff,
       wireframe: true,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.45,
     });
     const innerMesh = new THREE.Mesh(innerGeometry, innerMaterial);
     masterGroup.add(innerMesh);
@@ -59,10 +67,10 @@ export const ThreeHeroCanvas: React.FC = () => {
     const corePositions = coreGeometry.attributes.position.array;
     nodeGeometry.setAttribute('position', new THREE.BufferAttribute(corePositions, 3));
     const nodeMaterial = new THREE.PointsMaterial({
-      color: 0x00F0FF,
-      size: 0.35,
+      color: 0xffffff,
+      size: 0.28,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.55,
     });
     const coreNodes = new THREE.Points(nodeGeometry, nodeMaterial);
     masterGroup.add(coreNodes);
@@ -79,16 +87,16 @@ export const ThreeHeroCanvas: React.FC = () => {
       return new THREE.Mesh(ringGeo, ringMat);
     };
 
-    const ring1 = createRing(7.8, 0.04, 0x6366F1, 0.45);
+    const ring1 = createRing(7.8, 0.04, 0x8e7cff, 0.22);
     ring1.rotation.x = Math.PI / 3;
     masterGroup.add(ring1);
 
-    const ring2 = createRing(9.2, 0.04, 0x10B981, 0.35);
+    const ring2 = createRing(9.2, 0.04, 0xffffff, 0.08);
     ring2.rotation.y = Math.PI / 4;
     ring2.rotation.x = -Math.PI / 6;
     masterGroup.add(ring2);
 
-    const ring3 = createRing(11.0, 0.03, 0x00F0FF, 0.25);
+    const ring3 = createRing(11.0, 0.03, 0xffffff, 0.06);
     ring3.rotation.z = Math.PI / 5;
     masterGroup.add(ring3);
 
@@ -98,9 +106,9 @@ export const ThreeHeroCanvas: React.FC = () => {
     const particlePositions = new Float32Array(particleCount * 3);
     const particleColors = new Float32Array(particleCount * 3);
 
-    const colorA = new THREE.Color(0x00F0FF); // Cyan
-    const colorB = new THREE.Color(0x6366F1); // Indigo
-    const colorC = new THREE.Color(0x10B981); // Emerald
+    const colorA = new THREE.Color(0xffffff); // White
+    const colorB = new THREE.Color(0x8e7cff); // Accent
+    const colorC = new THREE.Color(0x71717a); // Zinc
 
     for (let i = 0; i < particleCount; i++) {
       const r = 6 + Math.random() * 9;
@@ -125,7 +133,7 @@ export const ThreeHeroCanvas: React.FC = () => {
       size: 0.22,
       vertexColors: true,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.5,
       blending: THREE.AdditiveBlending,
     });
     const particleSystem = new THREE.Points(particleGeo, particleMat);
@@ -170,8 +178,10 @@ export const ThreeHeroCanvas: React.FC = () => {
     let animationFrameId: number;
     let clock = new THREE.Clock();
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const animate = () => {
-      animationFrameId = requestAnimationFrame(animate);
+      if (!prefersReducedMotion) animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
       // Smooth inertia lerping towards cursor

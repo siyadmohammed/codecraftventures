@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackgroundEffects } from './components/BackgroundEffects';
+import { MotionConfig } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
@@ -12,27 +12,23 @@ import { Footer } from './components/Footer';
 
 export function App() {
   return (
-    <div className="relative min-h-screen bg-[#07090E] text-slate-100 font-sans selection:bg-brand-cyan/25 selection:text-brand-cyan">
-      {/* Dynamic Background Effects & Particle Grids */}
-      <BackgroundEffects />
+    <MotionConfig reducedMotion="user">
+      <div className="relative min-h-screen overflow-x-clip bg-background font-sans text-zinc-50">
+        <Navbar />
 
-      {/* Fixed Blurred Navbar */}
-      <Navbar />
+        <main className="relative z-10">
+          <Hero />
+          <Services />
+          <ArchitectureVisualizer />
+          <Portfolio />
+          <Process />
+          <About />
+          <Contact />
+        </main>
 
-      {/* Main Sections */}
-      <main className="relative z-10">
-        <Hero />
-        <Services />
-        <ArchitectureVisualizer />
-        <Portfolio />
-        <Process />
-        <About />
-        <Contact />
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </MotionConfig>
   );
 }
 

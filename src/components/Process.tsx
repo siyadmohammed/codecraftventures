@@ -1,6 +1,8 @@
 import React from 'react';
-import { Compass, Code2, Cpu, Activity, CheckCircle2 } from 'lucide-react';
+import { Compass, Code2, Cpu, Activity } from 'lucide-react';
 import { PROCESS_STEPS } from '../data/content';
+import { BlurFade } from './ui/blur-fade';
+import { SectionHeading } from './ui/section-heading';
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Compass,
@@ -11,67 +13,49 @@ const ICON_MAP: Record<string, React.ElementType> = {
 
 export const Process: React.FC = () => {
   return (
-    <section id="process" className="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10">
-      {/* Section Header */}
-      <div className="flex flex-col items-center text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-100 border border-white/10 text-xs font-mono text-brand-emerald mb-4">
-          <Compass className="w-3.5 h-3.5" />
-          <span>Deterministic Delivery</span>
+    <section id="process" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-4 py-28 sm:px-6 sm:py-36">
+      <div className="grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <div className="lg:sticky lg:top-32">
+            <SectionHeading
+              align="left"
+              eyebrow="Deterministic Delivery"
+              title="How We Engineer"
+              description="A disciplined, 4-stage engineering lifecycle transforming complex business challenges into production-hardened web platforms and autonomous systems."
+              className="mb-0"
+            />
+          </div>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-          How We Engineer
-        </h2>
-        <p className="max-w-2xl text-base sm:text-lg text-slate-300 font-light">
-          A disciplined, 4-stage engineering lifecycle transforming complex business challenges into production-hardened web platforms and autonomous systems.
-        </p>
-      </div>
 
-      {/* Process Steps Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {PROCESS_STEPS.map((step) => {
-          const StepIcon = ICON_MAP[step.icon] || Code2;
-          return (
-            <div
-              key={step.step}
-              className="rounded-2xl bg-surface-100/60 border border-white/10 p-6 sm:p-7 hover:border-brand-cyan/40 transition-all flex flex-col justify-between group shadow-lg hover:shadow-brand-cyan/5"
-            >
-              <div>
-                {/* Header with Step Number */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl font-extrabold font-mono text-slate-400 group-hover:text-brand-cyan transition-colors">
-                    {step.step}
-                  </span>
-                  <div className="w-10 h-10 rounded-xl bg-surface-200 border border-white/10 flex items-center justify-center text-brand-cyan group-hover:scale-110 transition-transform">
-                    <StepIcon className="w-5 h-5" />
-                  </div>
+        <ol className="relative lg:col-span-8">
+          <div aria-hidden="true" className="absolute bottom-6 left-5 top-6 w-px bg-gradient-to-b from-accent/60 via-line-strong to-transparent" />
+          {PROCESS_STEPS.map((step, i) => {
+            const StepIcon = ICON_MAP[step.icon] || Code2;
+            return (
+              <li key={step.step} className="relative pb-14 pl-16 last:pb-0">
+                {/* Outside BlurFade: its transform would otherwise become this icon's positioning context. */}
+                <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full border border-line-strong bg-background text-zinc-300">
+                  <StepIcon className="h-4 w-4" strokeWidth={1.75} />
                 </div>
-
-                <span className="text-xs font-mono uppercase tracking-wider text-brand-emerald mb-1 block">
-                  {step.phase}
-                </span>
-                <h3 className="text-lg font-bold text-white mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
-                  {step.description}
-                </p>
-              </div>
-
-              {/* Deliverables List */}
-              <div className="pt-4 border-t border-white/5 space-y-2">
-                <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
-                  Key Artifacts:
-                </span>
-                {step.deliverables.map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-xs text-slate-300">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-brand-cyan shrink-0 mt-0.5" />
-                    <span>{item}</span>
+                <BlurFade delay={i * 0.05}>
+                  <div className="flex items-baseline gap-3 font-mono text-xs">
+                    <span className="text-zinc-500">{step.step}</span>
+                    <span className="uppercase tracking-wider text-accent-soft">{step.phase}</span>
                   </div>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+                  <h3 className="mt-2 text-xl font-semibold tracking-tight text-zinc-50 sm:text-2xl">{step.title}</h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">{step.description}</p>
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {step.deliverables.map((item) => (
+                      <li key={item} className="rounded-full border border-line bg-surface px-3 py-1 text-xs text-zinc-300">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </BlurFade>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

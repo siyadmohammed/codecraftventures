@@ -6,119 +6,76 @@
   :root {
     color-scheme: dark;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: #07090E;
-    color: #F3F4F6;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: #08080A;
+    color: #FAFAFA;
+    font-feature-settings: "ss01", "cv11";
   }
 
-  /* Custom subtle scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #07090E;
+    background: #08080A;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1F2937;
+    background: #27272A;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #374151;
+    background: #3F3F46;
   }
 }
 
-/* Background animated subtle grid */
-.bg-cyber-grid {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-}
-
-.bg-cyber-dots {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* Glassmorphism card */
-.glass-panel {
-  background: rgba(17, 21, 31, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.glass-panel-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-panel-hover:hover {
-  background: rgba(22, 27, 38, 0.85);
-  border-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(0, 240, 255, 0.15);
-}
-
-/* Glowing text gradients */
-.text-gradient-cyan-indigo {
-  background: linear-gradient(135deg, #00F0FF 0%, #6366F1 50%, #A855F7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-emerald-cyan {
-  background: linear-gradient(135deg, #10B981 0%, #00F0FF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-silver {
-  background: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Animated gradient border container */
-.gradient-border-mask {
-  position: relative;
-  border-radius: inherit;
-}
-
-.gradient-border-mask::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.3));
+/* Paints a 1px ring on ::before using the element's own background, clipped to the border. */
+.mask-border {
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  pointer-events: none;
+  padding: 1px;
 }
 
-/* Keyframes for ambient light drift */
-@keyframes ambient-drift {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -40px) scale(1.08); }
-  66% { transform: translate(-25px, 20px) scale(0.95); }
-  100% { transform: translate(0px, 0px) scale(1); }
+/* Border beam: a short arc of light that travels around the element's border. */
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
 
-.animate-ambient-1 {
-  animation: ambient-drift 18s ease-in-out infinite alternate;
+@keyframes beam-spin {
+  to { --beam-angle: 360deg; }
 }
 
-.animate-ambient-2 {
-  animation: ambient-drift 22s ease-in-out infinite alternate-reverse;
+.border-beam {
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 0deg 280deg,
+    rgba(188, 178, 255, 0.0) 280deg,
+    #8E7CFF 330deg,
+    #FFFFFF 352deg,
+    transparent 360deg
+  );
+  animation: beam-spin var(--beam-duration, 8s) linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee,
+  .animate-shine,
+  .animate-gradient-pan,
+  .border-beam {
+    animation: none !important;
+  }
 }
