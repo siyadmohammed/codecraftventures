@@ -1,5 +1,5 @@
 import React, { useId } from 'react';
-import { cn } from './utils';
+import { cn } from '@/lib/utils';
 
 // Faint dot grid that fades out toward the edges via a radial mask.
 export const DotPattern: React.FC<{ className?: string }> = ({ className }) => {

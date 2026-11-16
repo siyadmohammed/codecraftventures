@@ -1,9 +1,11 @@
+'use client';
+
 import React, { useRef, useState } from 'react';
 import { Check, ShieldCheck, Database, Layout, Cpu } from 'lucide-react';
-import { AnimatedBeam } from './ui/animated-beam';
-import { BlurFade } from './ui/blur-fade';
-import { SectionHeading } from './ui/section-heading';
-import { cn } from './ui/utils';
+import { AnimatedBeam } from '@/components/ui/animated-beam';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { SectionHeading } from '@/components/ui/section-heading';
+import { cn } from '@/lib/utils';
 
 interface StageInfo {
   id: number;

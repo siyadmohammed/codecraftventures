@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   Mail,
@@ -11,12 +13,12 @@ import {
   RefreshCw
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { CONTACT_EMAIL, CONTACT_PHONE, FORMATTED_PHONE } from '../data/content';
-import { ContactFormData } from '../types';
-import { BlurFade } from './ui/blur-fade';
-import { BorderBeam } from './ui/border-beam';
-import { SectionHeading } from './ui/section-heading';
-import { cn } from './ui/utils';
+import { CONTACT_EMAIL, CONTACT_PHONE, FORMATTED_PHONE } from '@/data/content';
+import { ContactFormData } from '@/types';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { BorderBeam } from '@/components/ui/border-beam';
+import { SectionHeading } from '@/components/ui/section-heading';
+import { cn } from '@/lib/utils';
 
 const INPUT_CLASS =
   'w-full rounded-xl border border-line bg-background px-4 py-3 text-sm text-zinc-50 placeholder-zinc-600 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20';

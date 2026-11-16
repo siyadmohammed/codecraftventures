@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import {
   Bot,
@@ -12,12 +14,12 @@ import {
   ArrowRight,
   Code2
 } from 'lucide-react';
-import { SERVICES } from '../data/content';
-import { ServiceCategory, ServiceItem } from '../types';
-import { BlurFade } from './ui/blur-fade';
-import { MagicCard } from './ui/magic-card';
-import { SectionHeading } from './ui/section-heading';
-import { cn } from './ui/utils';
+import { SERVICES } from '@/data/content';
+import { ServiceCategory, ServiceItem } from '@/types';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { MagicCard } from '@/components/ui/magic-card';
+import { SectionHeading } from '@/components/ui/section-heading';
+import { cn } from '@/lib/utils';
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Bot,

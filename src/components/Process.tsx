@@ -1,8 +1,8 @@
 import React from 'react';
 import { Compass, Code2, Cpu, Activity } from 'lucide-react';
-import { PROCESS_STEPS } from '../data/content';
-import { BlurFade } from './ui/blur-fade';
-import { SectionHeading } from './ui/section-heading';
+import { PROCESS_STEPS } from '@/data/content';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { SectionHeading } from '@/components/ui/section-heading';
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Compass,

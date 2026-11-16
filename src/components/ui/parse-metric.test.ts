@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CASE_STUDIES, SERVICES } from '../../data/content';
+import { CASE_STUDIES, SERVICES } from '@/data/content';
 import { formatMetric, parseMetric } from './parse-metric';
 
 describe('parseMetric', () => {

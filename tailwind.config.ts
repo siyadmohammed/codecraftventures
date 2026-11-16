@@ -1,9 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
+  content: ['./src/**/*.{ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {
@@ -23,8 +21,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Geist"', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        sans: ['var(--font-geist-sans)', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'ui-monospace', 'monospace'],
       },
       animation: {
         marquee: 'marquee var(--duration) linear infinite',
@@ -48,4 +46,6 @@ export default {
     },
   },
   plugins: [],
-}
+};
+
+export default config;

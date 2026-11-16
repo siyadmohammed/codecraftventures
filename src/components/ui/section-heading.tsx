@@ -1,6 +1,6 @@
 import React from 'react';
 import { BlurFade } from './blur-fade';
-import { cn } from './utils';
+import { cn } from '@/lib/utils';
 
 interface SectionHeadingProps {
   eyebrow: string;

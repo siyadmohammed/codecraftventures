@@ -1,4 +1,4 @@
-import { ServiceItem, CaseStudy, ProcessStep } from '../types';
+import { ServiceItem, CaseStudy, ProcessStep } from '@/types';
 
 export const COMPANY_NAME = "Codecraft";
 export const TAGLINE = "The Art of Intelligent Software";

@@ -1,11 +1,11 @@
 import React from 'react';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import { ThreeHeroCanvas } from './ThreeHeroCanvas';
-import { CASE_STUDIES } from '../data/content';
-import { BlurFade } from './ui/blur-fade';
-import { DotPattern } from './ui/dot-pattern';
-import { Marquee } from './ui/marquee';
-import { ShineButton } from './ui/shine-button';
+import { ThreeHeroCanvas } from '@/components/ThreeHeroCanvas';
+import { CASE_STUDIES } from '@/data/content';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { DotPattern } from '@/components/ui/dot-pattern';
+import { Marquee } from '@/components/ui/marquee';
+import { ShineButton } from '@/components/ui/shine-button';
 
 const HIGHLIGHTS = [
   { label: 'Full-Stack Web', value: 'Modern React & Next.js', note: 'Ultra-responsive platforms' },

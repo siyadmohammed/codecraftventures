@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useId, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 

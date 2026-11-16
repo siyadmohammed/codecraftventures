@@ -1,12 +1,12 @@
 import React from 'react';
 import { ExternalLink, ArrowUpRight, MessageSquare, Compass, Calendar, Zap } from 'lucide-react';
-import { CASE_STUDIES } from '../data/content';
-import { BlurFade } from './ui/blur-fade';
-import { BorderBeam } from './ui/border-beam';
-import { MagicCard } from './ui/magic-card';
-import { NumberTicker } from './ui/number-ticker';
-import { SectionHeading } from './ui/section-heading';
-import { ShineButton } from './ui/shine-button';
+import { CASE_STUDIES } from '@/data/content';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { BorderBeam } from '@/components/ui/border-beam';
+import { MagicCard } from '@/components/ui/magic-card';
+import { NumberTicker } from '@/components/ui/number-ticker';
+import { SectionHeading } from '@/components/ui/section-heading';
+import { ShineButton } from '@/components/ui/shine-button';
 
 const PLUSONE_FEATURES = [
   { icon: Compass, title: 'Discover', note: 'Nightlife Events' },

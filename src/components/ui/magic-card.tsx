@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useRef } from 'react';
-import { cn } from './utils';
+import { cn } from '@/lib/utils';
 
 interface MagicCardProps {
   children: React.ReactNode;

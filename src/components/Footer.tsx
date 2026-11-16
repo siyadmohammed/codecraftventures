@@ -1,9 +1,10 @@
+'use client';
+
 import React from 'react';
 import { ExternalLink, ArrowUp } from 'lucide-react';
-import { COMPANY_NAME, TAGLINE, CONTACT_EMAIL, CONTACT_PHONE, FORMATTED_PHONE } from '../data/content';
+import { COMPANY_NAME, TAGLINE, CONTACT_EMAIL, CONTACT_PHONE, FORMATTED_PHONE } from '@/data/content';
 
-// Relative so it resolves under any GitHub Pages base path (vite base is "./").
-const LOGO_SRC = './logo.svg';
+const LOGO_SRC = '/logo.svg';
 
 const NAV_LINKS = [
   { name: 'Dual-Engine Services', href: '#services' },

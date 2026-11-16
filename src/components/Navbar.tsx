@@ -1,10 +1,11 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, Phone } from 'lucide-react';
-import { CONTACT_PHONE, FORMATTED_PHONE } from '../data/content';
-import { cn } from './ui/utils';
+import { CONTACT_PHONE, FORMATTED_PHONE } from '@/data/content';
+import { cn } from '@/lib/utils';
 
-// Relative so it resolves under any GitHub Pages base path (vite base is "./").
-const LOGO_SRC = './logo.svg';
+const LOGO_SRC = '/logo.svg';
 
 export const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);

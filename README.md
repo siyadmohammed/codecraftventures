@@ -2,8 +2,6 @@
 
 > Official repository for **Codecraft Ventures** ([www.plusone.today](http://www.plusone.today/)). Engineering high-performance web platforms and autonomous agentic systems.
 
-[![Deploy to GitHub Pages](https://github.com/siyadmohammed/codecraftventures/actions/workflows/deploy.yml/badge.svg)](https://github.com/siyadmohammed/codecraftventures/actions/workflows/deploy.yml)
-
 ---
 
 ## ⚡ Overview
@@ -19,13 +17,13 @@
 - **Interactive Architecture Visualizer**: Animated beam diagram of web client ➔ edge gateway ➔ agent swarm ➔ data execution; select a node to see its specification.
 - **Featured Product Showcase**: Highlights **PlusOne** ([plusone.today](http://www.plusone.today/)) — Codecraft's flagship social discovery & real-time matching platform.
 - **Working Contact System**: Direct email (`codecraftventures@gmail.com`), direct phone (`+91 83010 53212`), interactive project brief form with validation, and celebration effects.
-- **Automated GitHub Pages Deployment**: Fully automated CI/CD via GitHub Actions.
+- **Static by default**: the page is prerendered at build time and deployed on Vercel.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework**: React 18, TypeScript, Vite
+- **Framework**: Next.js 16 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS, with effects modelled on Magic UI (blur fade, border beam, magic card, marquee, number ticker, animated beam) in `src/components/ui/`
 - **Animation**: Motion (`motion/react`), honouring the OS reduced-motion setting
 - **3D Graphics**: Three.js (WebGL)
@@ -50,9 +48,29 @@ npm run dev
 # Run unit tests
 npm test
 
-# Build for production
+# Build and serve the production bundle
 npm run build
+npm start
 ```
+
+---
+
+## 📁 Structure
+
+```
+src/
+  app/          Next.js App Router: layout (fonts, metadata), page, global styles
+  components/   Page sections (Hero, Services, ...) and ui/ effect primitives
+  data/         Site copy: services, case studies, process steps, contact details
+  lib/          Shared helpers (cn class-name merge)
+  types/        Shared TypeScript types
+public/         Static assets served from the site root
+```
+
+## ▲ Deployment
+
+Deployed on Vercel. Import the repository in Vercel and keep the detected Next.js defaults
+(build command `next build`). No environment variables are required.
 
 ---
 

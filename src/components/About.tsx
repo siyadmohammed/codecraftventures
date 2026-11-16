@@ -1,8 +1,8 @@
 import React from 'react';
 import { Cpu, Code2, Check } from 'lucide-react';
-import { COMPANY_NAME, TAGLINE } from '../data/content';
-import { BlurFade } from './ui/blur-fade';
-import { DotPattern } from './ui/dot-pattern';
+import { COMPANY_NAME, TAGLINE } from '@/data/content';
+import { BlurFade } from '@/components/ui/blur-fade';
+import { DotPattern } from '@/components/ui/dot-pattern';
 
 const VALUES = [
   {

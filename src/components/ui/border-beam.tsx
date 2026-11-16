@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from './utils';
+import { cn } from '@/lib/utils';
 
 // Place inside a `relative` container with a border radius; the beam follows that radius.
 export const BorderBeam: React.FC<{ className?: string; duration?: number }> = ({ className, duration = 8 }) => (
