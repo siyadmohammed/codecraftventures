@@ -158,36 +158,6 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "Member Onboarding Flow", value: "Under 60s" }
     ],
     accentColor: "from-cyan-500 via-indigo-500 to-emerald-400"
-  },
-  {
-    id: "aetherflow",
-    title: "AetherFlow — Autonomous Supply Chain Agent Hub",
-    subtitle: "Enterprise Document Intelligence & Cross-System Actions",
-    category: "Enterprise Client",
-    pillar: "Agentic System",
-    summary: "A multi-agent autonomous system that parses thousands of customs declarations, invoices, and manifests every hour. Agents independently flag discrepancies, reconcile ERP databases, and draft vendor notices with zero human latency.",
-    techStack: ["Autonomous Agents", "Python", "FastAPI", "Vector Store", "PostgreSQL", "Kafka", "Docker"],
-    metrics: [
-      { label: "Processing Speedup", value: "14x" },
-      { label: "Manual Review Needed", value: "< 4.2%" },
-      { label: "Audit Accuracy", value: "99.94%" }
-    ],
-    accentColor: "from-emerald-500 via-teal-400 to-cyan-500"
-  },
-  {
-    id: "synthetix",
-    title: "Synthetix — High-Frequency Financial Intelligence Platform",
-    subtitle: "Real-Time Algorithmic Execution Dashboard",
-    category: "Fintech System",
-    pillar: "Web Platform",
-    summary: "A bespoke institutional trading and portfolio surveillance dashboard. Features 60fps canvas charts, sub-millisecond market feed ingestion, and role-based portfolio risk alerts.",
-    techStack: ["React", "TypeScript", "Go Backplane", "WebSockets", "TimescaleDB", "Tailwind"],
-    metrics: [
-      { label: "Live Tick Throughput", value: "85K/sec" },
-      { label: "UI Frame Rate", value: "Solid 60fps" },
-      { label: "Data Pipeline Delay", value: "< 12ms" }
-    ],
-    accentColor: "from-indigo-500 via-purple-500 to-cyan-400"
   }
 ];
 

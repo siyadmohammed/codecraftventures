@@ -58,8 +58,6 @@ export const Footer: React.FC = () => {
                   <ExternalLink className="h-3 w-3" />
                 </a>
               </li>
-              <li><a href="#works" className={linkClass}>AetherFlow Agent Hub</a></li>
-              <li><a href="#works" className={linkClass}>Synthetix Trading Engine</a></li>
             </ul>
           </div>
 

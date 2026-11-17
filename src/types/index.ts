@@ -16,7 +16,7 @@ export interface CaseStudy {
   id: string;
   title: string;
   subtitle: string;
-  category: 'In-House Product' | 'Enterprise Client' | 'Fintech System';
+  category: 'In-House Product';
   pillar: 'Web Platform' | 'Agentic System' | 'Hybrid Architecture';
   url?: string;
   isFlagship?: boolean;

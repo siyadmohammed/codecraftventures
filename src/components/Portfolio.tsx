@@ -3,7 +3,6 @@ import { ExternalLink, ArrowUpRight, MessageSquare, Compass, Calendar, Zap } fro
 import { CASE_STUDIES } from '@/data/content';
 import { BlurFade } from '@/components/ui/blur-fade';
 import { BorderBeam } from '@/components/ui/border-beam';
-import { MagicCard } from '@/components/ui/magic-card';
 import { NumberTicker } from '@/components/ui/number-ticker';
 import { SectionHeading } from '@/components/ui/section-heading';
 import { ShineButton } from '@/components/ui/shine-button';
@@ -22,7 +21,6 @@ const MOCK_EVENTS = [
 
 export const Portfolio: React.FC = () => {
   const flagship = CASE_STUDIES.find((cs) => cs.isFlagship);
-  const otherStudies = CASE_STUDIES.filter((cs) => !cs.isFlagship);
 
   return (
     <section id="works" className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-4 py-28 sm:px-6 sm:py-36">
@@ -34,7 +32,7 @@ export const Portfolio: React.FC = () => {
 
       {flagship && (
         <BlurFade>
-          <div className="relative mb-4 overflow-hidden rounded-3xl border border-line bg-surface">
+          <div className="relative overflow-hidden rounded-3xl border border-line bg-surface">
             <BorderBeam duration={10} />
             <div
               aria-hidden="true"
@@ -149,44 +147,6 @@ export const Portfolio: React.FC = () => {
           </div>
         </BlurFade>
       )}
-
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {otherStudies.map((study, i) => (
-          <BlurFade key={study.id} delay={i * 0.08}>
-            <MagicCard className="h-full">
-              <div className="flex h-full flex-col p-6 sm:p-8">
-                <div className="mb-6 flex items-center justify-between font-mono text-[11px] uppercase tracking-wider">
-                  <span className="text-zinc-500">{study.category}</span>
-                  <span className="text-accent-soft">{study.pillar}</span>
-                </div>
-
-                <h3 className="text-xl font-semibold tracking-tight text-zinc-50">{study.title}</h3>
-                <p className="mt-1 text-sm text-zinc-500">{study.subtitle}</p>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-400">{study.summary}</p>
-
-                <div className="mb-8 mt-6 flex flex-wrap gap-1.5">
-                  {study.techStack.map((tech) => (
-                    <span key={tech} className="rounded-md bg-white/[0.04] px-2 py-0.5 font-mono text-[11px] text-zinc-400">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <dl className="mt-auto grid grid-cols-3 gap-3 border-t border-line pt-5">
-                  {study.metrics.map((m) => (
-                    <div key={m.label} className="flex flex-col-reverse">
-                      <dt className="mt-0.5 text-[11px] text-zinc-500">{m.label}</dt>
-                      <dd className="text-lg font-semibold text-zinc-50">
-                        <NumberTicker value={m.value} />
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            </MagicCard>
-          </BlurFade>
-        ))}
-      </div>
     </section>
   );
 };
